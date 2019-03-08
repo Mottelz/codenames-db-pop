@@ -1,5 +1,8 @@
---  Find out how many Clues exist per word.
-SELECT count(c) FROM (select Count(clue) as c from Suggest GROUP BY Clue) WHERE c=1;
+--  Find out how many Clues exist per clue word.
+SELECT count(c) FROM (select Count(clue) as c from Suggest GROUP BY clue) WHERE c=1;
+
+-- Find out how many clues exist per codename.
+SELECT count(c) FROM (select Count(codename) as c from Suggest GROUP BY codename) WHERE c=1;
 
 -- Get number of Clues.
 SELECT Count(clue) FROM Clues;
