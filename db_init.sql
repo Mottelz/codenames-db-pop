@@ -1,0 +1,29 @@
+CREATE TABLE Codenames(
+  codename string unique not null,
+  primary key(codename)
+);
+
+CREATE TABLE Clues(
+  clue string unique not null,
+  primary key(clue)
+);
+
+CREATE TABLE Suggest(
+  clue string not null,
+  codename string not null,
+  primary key(clue, codename),
+  foreign key(clue) references Clues(clue),
+  foreign key(codename) references Codenames(codename)
+);
+
+CREATE TABLE GameHistory (
+    id INT PRIMARY KEY NOT NULL,
+    blueTeamName VARCHAR(60),
+    redTeamName VARCHAR(60),
+    numberOfRounds INT NOT NULL,
+    winner VARCHAR(60),
+    assassinRevealed BIT,
+    civilianRevealed INT,
+    redTilesRevealed INT,
+    blueTilesRevealed INT
+);
