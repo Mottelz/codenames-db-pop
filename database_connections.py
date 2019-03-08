@@ -75,10 +75,11 @@ class Database:
         if not self.clue_exists(clue):
             self.add_clue(clue)
 
-        # Add the suggestion
-        cur = self.conn.cursor()
-        cur.execute("INSERT INTO Suggest(clue, codename) VALUES(?, ?)", (clue, codename))
-        self.conn.commit()
+        # If this doesn't exist
+        if not self.reference_exists(clue, codename):
+            cur = self.conn.cursor()
+            cur.execute("INSERT INTO Suggest(clue, codename) VALUES(?, ?)", (clue, codename))
+            self.conn.commit()
 
     def codename_exists(self, codename):
         """
@@ -97,11 +98,26 @@ class Database:
     def clue_exists(self, clue):
         """
         Verify that the codename already exists
-        :param codename: the codename to be checked
+        :param clue: the clue to be checked
         :return: true if it's there, otherwise false
         """
         cur = self.conn.cursor()
         cur.execute("SELECT * FROM Clues WHERE clue=?", (clue, ))
+        row = cur.fetchone()
+        if row is not None:
+            return True
+        else:
+            return False
+
+    def reference_exists(self, clue, codename):
+        """
+        Verify that the codename already exists
+        :param clue: the clue to be checked
+        :param codename: the codename to be checked
+        :return: true if it's there, otherwise false
+        """
+        cur = self.conn.cursor()
+        cur.execute("SELECT * FROM Suggest WHERE clue=? AND codename=?", (clue, codename))
         row = cur.fetchone()
         if row is not None:
             return True
