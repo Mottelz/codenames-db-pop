@@ -17,7 +17,7 @@ CREATE TABLE Suggest(
 );
 
 CREATE TABLE GameHistory (
-    id INT PRIMARY KEY NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     blueTeamName VARCHAR(60),
     redTeamName VARCHAR(60),
     numberOfRounds INT NOT NULL,

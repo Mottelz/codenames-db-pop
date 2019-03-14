@@ -14,4 +14,4 @@ SELECT Count(codename) FROM Codenames;
 SELECT * FROM Suggest WHERE codename='CODENAME';
 
 -- Get the codenames for a clue
-SELECT * FROM Suggest WHERE codename='CODENAME';
+SELECT * FROM Suggest WHERE clue='CODENAME';
