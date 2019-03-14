@@ -12,19 +12,19 @@ def get_all_clues(words: []):
     return to_ret
 
 
-def count_valid(counter):
+def count_valid(c):
     valid = 0
-    for pair in counter.most_common():
+    for pair in c.most_common():
         if pair[1] > 2:
             valid = valid + 1
     return valid
 
 
 def sanitize_codenames(old_codenames):
-    counter = Counter(old_codenames)
+    c = Counter(get_all_clues(old_codenames))
     new_codenames = set()
 
-    for pair in counter.most_common(100):
+    for pair in c.most_common(100):
         if pair[1] > 2:
             new_codenames.add(pair[0])
             if len(new_codenames) == 60:
