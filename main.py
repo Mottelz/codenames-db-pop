@@ -25,19 +25,33 @@ def get_all_da_clues(words: []):
 
 codenames = new_db.get_all_codenames()
 all_da_clues = get_all_da_clues(codenames)
-counter = Counter(all_da_clues)
-new_codenames = set()
+c1 = Counter(all_da_clues)
+codenames2 = set()
 
-for pair in counter.most_common(100):
+for pair in c1.most_common(100):
     if pair[1] > 2:
-        new_codenames.add(pair[0])
+        codenames2.add(pair[0])
 
 for codename in codenames:
     clues = spinup_data.get_related_words(codename)
-    if any(True for clue in clues if clue in new_codenames):
-        new_codenames.add(codename)
+    if any(True for clue in clues if clue in codenames2):
+        codenames2.add(codename)
 
-all_da_clues = get_all_da_clues(list(new_codenames))
+all_da_clues = get_all_da_clues(list(codenames2))
 
 c2 = Counter(all_da_clues)
-print(counter.most_common(100))
+codenames3 = set()
+
+for pair in c2.most_common(50):
+    if pair[1] > 2:
+        codenames3.add(pair[0])
+
+for codename in codenames2:
+    clues = spinup_data.get_related_words(codename)
+    if any(True for clue in clues if clue in codenames3):
+        codenames3.add(codename)
+
+all_da_clues = get_all_da_clues(list(codenames3))
+
+c3 = Counter(all_da_clues)
+print(c3.most_common(50))
