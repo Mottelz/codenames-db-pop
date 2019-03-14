@@ -14,10 +14,10 @@ def get_related_words(word: str):
 
 
 def all_good(core_word, new_word, words):
-    if core_word in new_word:
-        return False
-    if new_word in words:
-        return False
+    # if core_word in new_word:
+    #     return False
+    # if new_word in words:
+    #     return False
     if '_' in new_word:
         return False
 

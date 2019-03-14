@@ -123,3 +123,18 @@ class Database:
             return True
         else:
             return False
+
+    def get_all_codenames(self):
+        """
+        Query all rows from the given table
+        :return: An array of all the codenames
+        """
+        cur = self.conn.cursor()
+        cur.execute("SELECT * FROM Codenames")
+
+        rows = cur.fetchall()
+        codenames = []
+        for row in rows:
+            for codename in row:
+                codenames.append(codename)
+        return codenames
