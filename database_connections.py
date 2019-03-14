@@ -138,3 +138,14 @@ class Database:
             for codename in row:
                 codenames.append(codename)
         return codenames
+
+    def add_board_layout(self, first, layout):
+        """
+        Add a board layout
+        :param first: red || blue. The team that goes first.
+        :param layout: string of chars CARB that defines the board layout.
+        :return:
+        """
+        cur = self.conn.cursor()
+        cur.execute("INSERT INTO BoardLayouts(firstTeam, layout) VALUES(?, ?)", (first, layout))
+        self.conn.commit()

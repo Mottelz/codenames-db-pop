@@ -27,3 +27,11 @@ CREATE TABLE GameHistory (
     redTilesRevealed INT,
     blueTilesRevealed INT
 );
+
+CREATE TABLE BoardLayouts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  firstTeam string NOT NULL,
+  layout string NOT NULL
+);
+
+-- How many of a given word's clues are also codenames

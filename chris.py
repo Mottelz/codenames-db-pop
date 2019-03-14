@@ -42,10 +42,14 @@ codenames = new_db.get_all_codenames()
 counter = Counter(get_all_clues(codenames))
 n = count_valid(counter)
 
-while n < 200:
+while n < 156:
     print(n)
     codenames = sanitize_codenames(codenames)
     counter = Counter(get_all_clues(codenames))
     n = count_valid(counter)
+
+# codenames -> database for the Codenames
+# get_all_clues(codenames) -> database for the Clues
+# figure out from this what goes in Suggest
 
 print(counter)
