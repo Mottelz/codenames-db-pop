@@ -1,7 +1,6 @@
 import database_connections
 import random
 
-teams = ['red', 'blue']
 db = database_connections.Database("new.db")
 
 base = (['R'] * 8) + (['B'] * 8) + (['C'] * 7) + ['A']
