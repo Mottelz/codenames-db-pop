@@ -54,4 +54,33 @@ for codename in codenames2:
 all_da_clues = get_all_da_clues(list(codenames3))
 
 c3 = Counter(all_da_clues)
-print(c3.most_common(50))
+# print(c3.most_common(100))
+codenames4 = set()
+
+for pair in c3.most_common(50):
+    if pair[1] > 2:
+        codenames4.add(pair[0])
+
+for codename in codenames3:
+    clues = spinup_data.get_related_words(codename)
+    if any(True for clue in clues if clue in codenames4):
+        codenames4.add(codename)
+
+all_da_clues = get_all_da_clues(list(codenames4))
+
+c4 = Counter(all_da_clues)
+# print(c4.most_common(100))
+codenames5 = set()
+
+for pair in c4.most_common(60):
+    if pair[1] > 2:
+        codenames5.add(pair[0])
+
+for codename in codenames4:
+    clues = spinup_data.get_related_words(codename)
+    if any(True for clue in clues if clue in codenames5):
+        codenames5.add(codename)
+
+all_da_clues = get_all_da_clues(list(codenames5))
+
+c5 = Counter(all_da_clues)
