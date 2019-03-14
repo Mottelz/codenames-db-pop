@@ -23,6 +23,14 @@ def get_all_da_clues(words: []):
     return to_ret
 
 
+def get_num_of_good(c: Counter):
+    to_ret = 0
+    for pair in c.most_common():
+        if pair[1] > 2:
+            to_ret += 1
+    return to_ret
+
+
 codenames = new_db.get_all_codenames()
 all_da_clues = get_all_da_clues(codenames)
 c1 = Counter(all_da_clues)
