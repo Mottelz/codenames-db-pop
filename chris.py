@@ -3,6 +3,7 @@ import spinup_data
 from collections import Counter
 
 new_db = db.Database("new.db")
+final_db = db.Database("codenames.db")
 
 
 def get_all_clues(words: []):
@@ -50,6 +51,9 @@ while n < 156:
 
 # codenames -> database for the Codenames
 # get_all_clues(codenames) -> database for the Clues
-# figure out from this what goes in Suggest
+
+for codename in codenames:
+    print("Adding " + codename)
+    final_db.add_codename(codename)
 
 print(counter)
